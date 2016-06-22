@@ -419,7 +419,7 @@ public class AutomaticPrinterScreen extends JFrame {
 								}
 
 								// 打印
-								WitturCEAndSchindler witturCEAndXD = new WitturCEAndSchindler(printers[1], certStr,
+								WitturCEAndSchindler witturCEAndXD = new WitturCEAndSchindler(false, printers[1], certStr,
 										seriesStr, serialNoStr, saleOrNoStr, dateStr, typeStr, code, itemStr, dsceStr,
 										snoStr, materDsce, idNoStr);
 								witturCEAndXD.setPadding(paddingLeftDouble, paddingTopDouble);
@@ -449,7 +449,7 @@ public class AutomaticPrinterScreen extends JFrame {
 								materDsce = printDataList.get(3);
 								idNoStr = printDataList.get(4);
 								codeStr2 = materDsce + "NANA" + idNoStr + serialNoStr
-										+ "---Wittur CN215214SuzhouCNNANANANA";
+										+ "---Wittur CN215214SuzhouCNWittur HoldingGmbH85259WiedenzhausenDE";
 								gc = new GenerateCode();
 								try {
 									// 生成CE二维码
@@ -461,7 +461,7 @@ public class AutomaticPrinterScreen extends JFrame {
 								}
 
 								// 打印
-								WitturCEAndSchindler witturCEAndXDC = new WitturCEAndSchindler(printers[2], certStr,
+								WitturCEAndSchindler witturCEAndXDC = new WitturCEAndSchindler(true, printers[2], certStr,
 										seriesStr, serialNoStr, saleOrNoStr, dateStr, typeStr, code, itemStr, dsceStr,
 										snoStr, materDsce, idNoStr);
 								witturCEAndXDC.setPadding(paddingLeftDouble, paddingTopDouble);
@@ -1273,7 +1273,7 @@ public class AutomaticPrinterScreen extends JFrame {
 				progressLabel.setText("进度：");
 				progressLabel.setIcon(null);
 				progressLabel.setVisible(false);
-				JOptionPane.showMessageDialog(null, "V7数据表已初始化完毕！");
+				JOptionPane.showMessageDialog(null, "V7数据表已初始化完毕！\n加载数据："+v7List.size()+"条。");
 				reprintBtn.setEnabled(true);
 				return null;
 			}

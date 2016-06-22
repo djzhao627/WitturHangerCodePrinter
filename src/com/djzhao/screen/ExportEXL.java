@@ -70,6 +70,15 @@ public class ExportEXL implements ActionListener {
 	private File directory = null;
 	/** ÎÄ¼þÂ·¾¶ */
 	private File file = null;
+	
+	private static ExportEXL exportEXL = null;
+	
+	public static ExportEXL getScreen(){
+		if (exportEXL == null) {
+			exportEXL = new ExportEXL();
+		}
+		return exportEXL;
+	}
 
 	ExportEXL() {
 

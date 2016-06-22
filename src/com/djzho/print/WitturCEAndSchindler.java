@@ -23,6 +23,9 @@ import javax.print.attribute.standard.PrinterName;
 
 public class WitturCEAndSchindler implements Printable {
 
+	/** 出口标志 */
+	private boolean isExport = false;
+
 	/** 打印机名称 */
 	private String printerName = "ZDesigner 105SLPlus-300dpi ZPL";
 
@@ -69,10 +72,11 @@ public class WitturCEAndSchindler implements Printable {
 		this.paddingTop = paddingTop;
 	}
 
-	public WitturCEAndSchindler(String printerName, String certNO, String series, String sn, String salesOrdNo,
-			String productDate, String type, String code, String item, String desc, String sno, String material,
-			String idNumber) {
+	public WitturCEAndSchindler(boolean isExport, String printerName, String certNO, String series, String sn,
+			String salesOrdNo, String productDate, String type, String code, String item, String desc, String sno,
+			String material, String idNumber) {
 		super();
+		this.isExport = isExport;
 		this.printerName = printerName;
 		this.certNO = certNO;
 		this.series = series;
@@ -146,46 +150,54 @@ public class WitturCEAndSchindler implements Printable {
 			}
 
 			// [start]绘制CE标签
-			g2.drawImage(codeImg, (int) (x + 170), (int) (y + 104), c);
+			g2.drawImage(codeImg, (int) (x + 184), (int) (y + 118), c);
 
-			g2.drawString(certNO, (float) (x + 242), (float) (y + 56));
-			g2.drawString(series, (float) (x + 269), (float) (y + 67));
-			g2.drawString(serialNumber, (float) (x + 258), (float) (y + 78));
-			g2.drawString(salesOrdNo, (float) (x + 300), (float) (y + 90));
-			g2.drawString(type, (float) (x + 264), (float) (y + 101));
-			g2.drawString(productDate, (float) (x + 283), (float) (y + 135));
+			g2.drawString(certNO, (float) (x + 240), (float) (y + 63));
+			g2.drawString(series, (float) (x + 265), (float) (y + 75));
+			g2.drawString(serialNumber, (float) (x + 255), (float) (y + 87));
+			g2.drawString(salesOrdNo, (float) (x + 295), (float) (y + 98));
+			g2.drawString(type, (float) (x + 260), (float) (y + 110));
+			g2.drawString(productDate, (float) (x + 283), (float) (y + 143));
 
 			int indexSharp = code.indexOf('#');
 
 			// 绘制项目号
-			g2.drawString("项目号：", 406, 28);
-			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), 406, 38);
+			g2.drawString("项目号：", (float) (x + 406), (float) (y + 28));
+			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), (float) (x + 406), (float) (y + 38));
 
 			// 绘制流水号
-			g2.drawString("流水号：", 406, 62);
-			g2.drawString(sno, 406, 72);
+			g2.drawString("流水号：", (float) (x + 406), (float) (y + 62));
+			g2.drawString(sno, (float) (x + 406), (float) (y + 72));
 
 			// 绘制物料号
-			g2.drawString("物料号：", 406, 96);
-			g2.drawString(item, 406, 106);
+			g2.drawString("物料号：", (float) (x + 406), (float) (y + 96));
+			g2.drawString(item, (float) (x + 406), (float) (y + 106));
 
 			// 绘制物料描述
-			g2.drawString("物料描述：", 406, 130);
+			g2.drawString("物料描述：", (float) (x + 406), (float) (y + 130));
 			int len = desc.length();
 			if (len > 15) {
-				g2.drawString(desc.substring(0, 15), 406, 140);
-				g2.drawString(desc.substring(15, len), 406, 148);
+				g2.drawString(desc.substring(0, 15), (float) (x + 406), (float) (y + 140));
+				g2.drawString(desc.substring(15, len), (float) (x + 406), (float) (y + 148));
 			} else {
-				g2.drawString(desc, 406, 140);
+				g2.drawString(desc, (float) (x + 406), (float) (y + 140));
 			} // [end]
 
 			// 绘制迅达标签
 			font = new Font("新宋体", Font.BOLD, 5);
 			g2.setFont(font);
-			g2.drawString(material, (float) (x + 128), (float) (y + 30));
-			g2.drawString(idNumber, (float) (x + 109), (float) (y + 38));
-			g2.drawString(serialNumber, (float) (x + 115), (float) (y + 45));
+			g2.drawString(material, (float) (x + 128), (float) (y + 27));
+			g2.drawString(idNumber, (float) (x + 109), (float) (y + 35));
+			g2.drawString(serialNumber, (float) (x + 115), (float) (y + 43));
 			g2.drawImage(XDImage, (int) (x + 26), (int) (y + 67), c);
+
+			// 绘制出口字段
+			if (isExport) {
+				g2.drawString("Imported by: Wittur Holding GmbH", (float) (x + 81), (float) (y + 90));
+				g2.drawString("Importer address: ", (float) (x + 81), (float) (y + 95));
+				g2.drawString("Rohrbachstrasse 26-30, 85259 ", (float) (x + 81), (float) (y + 100));
+				g2.drawString("Wiedenzhausen, Germany", (float) (x + 81), (float) (y + 105));
+			}
 
 			return PAGE_EXISTS;
 		default:
@@ -202,11 +214,12 @@ public class WitturCEAndSchindler implements Printable {
 		PageFormat pageFormat = new PageFormat();
 		pageFormat.setOrientation(PageFormat.LANDSCAPE);
 		// 通过Paper设置页面的空白边距和可打印区域。必须与实际打印纸张大小相符。
-		Paper p = new Paper();
-		p.setSize(156, 493);// 纸张大小
-		p.setImageableArea(0, 0, 156, 493);// A4(595 X
-											// 842)设置打印区域，其实0，0应该是72，72，因为A4纸的默认X,Y边距是72
-		pageFormat.setPaper(p);
+		Paper paper = new Paper();
+		paper.setSize(156, 493);// 纸张大小
+		// 方向已旋转
+		paper.setImageableArea(0, 0, 156, 493);// A4(595 X
+		// 842)设置打印区域，其实0，0应该是72，72，因为A4纸的默认X,Y边距是72
+		pageFormat.setPaper(paper);
 		// 把 PageFormat 和 Printable 添加到书中，组成一个页面
 		book.append(new WitturCEAndSchindler(), pageFormat);
 
@@ -215,9 +228,7 @@ public class WitturCEAndSchindler implements Printable {
 
 		HashAttributeSet hashAttributeSet = new HashAttributeSet();
 
-		String printerName = "ZDesigner 105SLPlus-300dpi ZPL";
-
-		hashAttributeSet.add(new PrinterName(printerName, null));
+		hashAttributeSet.add(new PrinterName("ZDesigner ZM400 300 dpi (ZPL)", null));
 
 		PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, hashAttributeSet);
 
@@ -240,6 +251,7 @@ public class WitturCEAndSchindler implements Printable {
 		} catch (PrinterException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public void printcode() {
@@ -257,8 +269,8 @@ public class WitturCEAndSchindler implements Printable {
 		// 842)设置打印区域，其实0，0应该是72，72，因为A4纸的默认X,Y边距是72
 		pageFormat.setPaper(paper);
 		// 把 PageFormat 和 Printable 添加到书中，组成一个页面
-		book.append(new WitturCEAndSchindler(printerName, certNO, series, serialNumber, salesOrdNo, productDate, type, code,
-				item, desc, sno, material, idNumber), pageFormat);
+		book.append(new WitturCEAndSchindler(isExport, printerName, certNO, series, serialNumber, salesOrdNo,
+				productDate, type, code, item, desc, sno, material, idNumber), pageFormat);
 
 		// 获取打印服务对象
 		PrinterJob printerJob = PrinterJob.getPrinterJob();

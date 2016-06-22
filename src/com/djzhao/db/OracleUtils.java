@@ -11,17 +11,17 @@ public class OracleUtils {
 
 	private static final String driverUrl = "oracle.jdbc.driver.OracleDriver";
 
-	private static final String url = "jdbc:oracle:thin:@192.168.1.106:1521:orcl";
 	// private static final String url =
-	// "jdbc:oracle:thin:@172.21.1.61:1521:orcl";
-	// private static final String url =
-	// "jdbc:oracle:thin:@172.21.3.131:1521:BAAN";// orcl
+	// "jdbc:oracle:thin:@192.168.1.106:1521:orcl";
+//	private static final String url = "jdbc:oracle:thin:@172.21.1.61:1521:orcl";
+	 private static final String url =
+	 "jdbc:oracle:thin:@172.21.3.131:1521:BAAN";// orcl
 
-	// private static final String username = "baandb";// system
-	private static final String username = "system";
+	 private static final String username = "baandb";// system
+//	private static final String username = "system";
 
-	// private static final String password = "change_baan_916";// Qwe12345
-	private static final String password = "Qwe12345";
+	 private static final String password = "change_baan_916";// Qwe12345
+//	private static final String password = "Qwe12345";
 
 	public static Connection getConnection() {
 		Connection connection = null;

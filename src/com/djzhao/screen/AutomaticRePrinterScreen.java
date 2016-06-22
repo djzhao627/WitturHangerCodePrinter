@@ -108,6 +108,7 @@ public class AutomaticRePrinterScreen extends JFrame {
 	public static AutomaticRePrinterScreen getScreen(ArrayList<V7Model> v7) {
 		if (automaticRePrinterScreen == null) {
 			v7List = v7;
+			System.out.println(v7List.size());
 			automaticRePrinterScreen = new AutomaticRePrinterScreen();
 		}
 		return automaticRePrinterScreen;
@@ -351,6 +352,8 @@ public class AutomaticRePrinterScreen extends JFrame {
 
 							// 标签类别
 							int type = Integer.parseInt(printDataList.get(listSize - 1));
+							
+							
 
 							// [start]
 							switch (type) {
@@ -416,7 +419,7 @@ public class AutomaticRePrinterScreen extends JFrame {
 								}
 
 								// 打印
-								WitturCEAndSchindler witturCEAndXD = new WitturCEAndSchindler(printers[1], certStr,
+								WitturCEAndSchindler witturCEAndXD = new WitturCEAndSchindler(false, printers[1], certStr,
 										seriesStr, serialNoStr, saleOrNoStr, dateStr, typeStr, code, itemStr, dsceStr,
 										snoStr, materDsce, idNoStr);
 								witturCEAndXD.setPadding(paddingLeftDouble, paddingTopDouble);
@@ -445,7 +448,7 @@ public class AutomaticRePrinterScreen extends JFrame {
 								materDsce = printDataList.get(3);
 								idNoStr = printDataList.get(4);
 								codeStr2 = materDsce + "NANA" + idNoStr + serialNoStr
-										+ "---Wittur CN215214SuzhouCNNANANANA";
+										+ "---Wittur CN215214SuzhouCNWittur HoldingGmbH85259WiedenzhausenDE";
 								gc = new GenerateCode();
 								try {
 									// 生成CE二维码
@@ -457,7 +460,7 @@ public class AutomaticRePrinterScreen extends JFrame {
 								}
 
 								// 打印
-								WitturCEAndSchindler witturCEAndXDC = new WitturCEAndSchindler(printers[2], certStr,
+								WitturCEAndSchindler witturCEAndXDC = new WitturCEAndSchindler(true, printers[2], certStr,
 										seriesStr, serialNoStr, saleOrNoStr, dateStr, typeStr, code, itemStr, dsceStr,
 										snoStr, materDsce, idNoStr);
 								witturCEAndXDC.setPadding(paddingLeftDouble, paddingTopDouble);
@@ -698,7 +701,7 @@ public class AutomaticRePrinterScreen extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (searchBtn.isEnabled()) {
-					String searchStr = saleOrderNumber.getText().toString();
+					String searchStr = saleOrderNumber.getText().toString().trim();
 					if (searchStr.isEmpty()) {// 如果未填写，还原所有数据
 						// 恢复列表
 						JOptionPane.showMessageDialog(null, "请填写内容！");

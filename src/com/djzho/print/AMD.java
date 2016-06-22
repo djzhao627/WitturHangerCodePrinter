@@ -107,7 +107,7 @@ public class AMD implements Printable {
 			// Java平台所定义的五种字体系列：Serif、SansSerif、Monospaced、Dialog 和 DialogInput
 			Font font = new Font("新宋体", Font.BOLD, 12);
 			g2.setFont(font);// 设置字体
-			g2.drawString(productCode, (float) (x + 58), (float) (y + 25));
+			g2.drawString(productCode, (float) (x + 58), (float) (y + 25f));
 
 			font = new Font("新宋体", Font.BOLD, 7);
 			g2.setFont(font);// 设置字体
@@ -142,25 +142,25 @@ public class AMD implements Printable {
 			g2.setFont(font);// 设置字体
 
 			// 绘制项目号
-			g2.drawString("项目号：", 293, 22);
-			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), 293, 30);
+			g2.drawString("项目号：", (float) (x + 293), (float) (y + 22));
+			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), (float) (x + 293), (float) (y + 30));
 
 			// 绘制流水号
-			g2.drawString("流水号：", 293, 41);
-			g2.drawString(sno, 293, 48);
+			g2.drawString("流水号：", (float) (x + 293), (float) (y + 41));
+			g2.drawString(sno, (float) (x + 293), (float) (y + 48));
 
 			// 绘制物料号
-			g2.drawString("物料号：", 293, 59);
-			g2.drawString(item, 293, 66);
+			g2.drawString("物料号：", (float) (x + 293), (float) (y + 59));
+			g2.drawString(item, (float) (x + 293), (float) (y + 66));
 
 			// 绘制物料描述
-			g2.drawString("物料描述：", 293, 77);
+			g2.drawString("物料描述：", (float) (x + 293), (float) (y + 77));
 			int len = desc.length();
 			if (len > 15) {
-				g2.drawString(desc.substring(0, 15), 293, 84);
-				g2.drawString(desc.substring(15, len), 293, 90);
+				g2.drawString(desc.substring(0, 15), (float) (x + 293), (float) (y + 84));
+				g2.drawString(desc.substring(15, len), (float) (x + 293), (float) (y + 90));
 			} else {
-				g2.drawString(desc, 293, 84);
+				g2.drawString(desc, (float) (x + 293), (float) (y + 84));
 			}
 
 			return PAGE_EXISTS;

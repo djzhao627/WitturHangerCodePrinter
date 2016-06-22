@@ -149,25 +149,25 @@ public class WitturCE implements Printable {
 			int indexSharp = code.indexOf('#');
 
 			// 绘制项目号
-			g2.drawString("项目号：", 236, 28);
-			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), 236, 38);
+			g2.drawString("项目号：", (float) (x + 236), (float) (y + 28));
+			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), (float) (x + 236), (float) (y + 38));
 
 			// 绘制流水号
-			g2.drawString("流水号：", 236, 62);
-			g2.drawString(sno, 236, 72);
+			g2.drawString("流水号：", (float) (x + 236), (float) (y + 62));
+			g2.drawString(sno, (float) (x + 236), (float) (y + 72));
 
 			// 绘制物料号
-			g2.drawString("物料号：", 236, 96);
-			g2.drawString(item, 236, 106);
+			g2.drawString("物料号：", (float) (x + 236), (float) (y + 96));
+			g2.drawString(item, (float) (x + 236), (float) (y + 106));
 
 			// 绘制物料描述
-			g2.drawString("物料描述：", 236, 130);
+			g2.drawString("物料描述：", (float) (x + 236), (float) (y + 130));
 			int len = desc.length();
 			if (len > 15) {
-				g2.drawString(desc.substring(0, 15), 236, 140);
-				g2.drawString(desc.substring(15, len), 236, 148);
+				g2.drawString(desc.substring(0, 15), (float) (x + 236), (float) (y + 140));
+				g2.drawString(desc.substring(15, len), (float) (x + 236), (float) (y + 148));
 			} else {
-				g2.drawString(desc, 236, 140);
+				g2.drawString(desc, (float) (x + 236), (float) (y + 140));
 			}
 
 			return PAGE_EXISTS;

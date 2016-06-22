@@ -125,7 +125,7 @@ public class AMDAndBarcode implements Printable {
 			// [start]打印AMD标签
 			Font font = new Font("新宋体", Font.BOLD, 12);
 			g2.setFont(font);// 设置字体
-			g2.drawString(productCode, (float) (x + 270.5), (float) (y + 25));
+			g2.drawString(productCode, (float) (x + 270.5), (float) (y + 30));
 
 			font = new Font("新宋体", Font.BOLD, 7);
 			g2.setFont(font);// 设置字体
@@ -148,11 +148,11 @@ public class AMDAndBarcode implements Printable {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			g2.drawString(type, (float) (x + 300.5), (float) (y + 47));
-			g2.drawString(certNo, (float) (x + 300.5), (float) (y + 56));
-			g2.drawString(sn, (float) (x + 300.5), (float) (y + 66));
-			g2.drawString(salesNo, (float) (x + 300.5), (float) (y + 76));
-			g2.drawString(dateStr, (float) (x + 300.5), (float) (y + 87));
+			g2.drawString(type, (float) (x + 307), (float) (y + 50));
+			g2.drawString(certNo, (float) (x + 307), (float) (y + 60));
+			g2.drawString(sn, (float) (x + 307), (float) (y + 70));
+			g2.drawString(salesNo, (float) (x + 307), (float) (y + 80));
+			g2.drawString(dateStr, (float) (x + 307), (float) (y + 90));
 
 			g2.drawImage(codeImg, (int) (x + 454.5), (int) (y + 48), c);
 
@@ -162,32 +162,32 @@ public class AMDAndBarcode implements Printable {
 			g2.setFont(font);// 设置字体
 
 			// 绘制项目号
-			g2.drawString("项目号：", 505.5f, 22);
-			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), 505.5f, 30);
+			g2.drawString("项目号：", (float) (x + 505.5), (float) (y + 22));
+			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), (float) (x + 505.5), (float) (y + 30));
 
 			// 绘制流水号
-			g2.drawString("流水号：", 505.5f, 41);
-			g2.drawString(sno, 505.5f, 48);
+			g2.drawString("流水号：", (float) (x + 505.5), (float) (y + 41));
+			g2.drawString(sno, (float) (x + 505.5), (float) (y + 48));
 
 			// 绘制物料号
-			g2.drawString("物料号：", 505.5f, 59);
-			g2.drawString(item, 505.5f, 66);
+			g2.drawString("物料号：", (float) (x + 505.5), (float) (y + 59));
+			g2.drawString(item, (float) (x + 505.5), (float) (y + 66));
 
 			// 绘制物料描述
-			g2.drawString("物料描述：", 505.5f, 77);
+			g2.drawString("物料描述：", (float) (x + 505.5), (float) (y + 77));
 			int len = desc.length();
 			if (len > 15) {
-				g2.drawString(desc.substring(0, 15), 505.5f, 84);
-				g2.drawString(desc.substring(15, len), 505.5f, 90);
+				g2.drawString(desc.substring(0, 15), (float) (x + 505.5), (float) (y + 84));
+				g2.drawString(desc.substring(15, len), (float) (x + 505.5), (float) (y + 90));
 			} else {
-				g2.drawString(desc, 505.5f, 84);
+				g2.drawString(desc, (float) (x + 505.5), (float) (y + 84));
 			} // [end]
 
 			// 绘制条形码标签
 			font = new Font("新宋体", Font.BOLD, 10);
 			g2.setFont(font);
-			g2.drawString(barCode, (float) (x + 20), (float) (y + 30));
-			g2.drawImage(barCodeImg, (int) (x + 14), (int) (y + 38), (int) (barCodeImg.getWidth(null) * 0.6),
+			g2.drawString(barCode, (float) (x + 20), (float) (y + 40));
+			g2.drawImage(barCodeImg, (int) (x + 14), (int) (y + 48), (int) (barCodeImg.getWidth(null) * 0.6),
 					(int) (20), c);
 
 			return PAGE_EXISTS;
@@ -218,7 +218,7 @@ public class AMDAndBarcode implements Printable {
 
 		HashAttributeSet hashAttributeSet = new HashAttributeSet();
 
-		String printerName = "ZDesigner 105SLPlus-300dpi ZPL";
+		String printerName = "ZDesigner ZM400 300 dpi (ZPL) (副本 2)";
 
 		hashAttributeSet.add(new PrinterName(printerName, null));
 

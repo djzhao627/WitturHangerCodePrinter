@@ -143,43 +143,43 @@ public class WitturCEAndBarcode implements Printable {
 			}
 
 			// 绘制WitturCE标签
-			g2.drawImage(codeImg, (int) (x + 212), (int) (y + 104), c);
+			g2.drawImage(codeImg, (int) (x + 222), (int) (y + 120), c);
 
-			g2.drawString(certNO, (float) (x + 284.5), (float) (y + 56));
-			g2.drawString(series, (float) (x + 311.5), (float) (y + 67));
-			g2.drawString(sn, (float) (x + 300.5), (float) (y + 78));
-			g2.drawString(salesOrdNo, (float) (x + 342.5), (float) (y + 90));
-			g2.drawString(type, (float) (x + 306.5), (float) (y + 101));
-			g2.drawString(productDate, (float) (x + 325.5), (float) (y + 135));
+			g2.drawString(certNO, (float) (x + 280), (float) (y + 70));
+			g2.drawString(series, (float) (x + 310), (float) (y + 80));
+			g2.drawString(sn, (float) (x + 295), (float) (y + 92));
+			g2.drawString(salesOrdNo, (float) (x + 340), (float) (y + 102));
+			g2.drawString(type, (float) (x + 303), (float) (y + 115));
+			g2.drawString(productDate, (float) (x + 323), (float) (y + 148));
 
 			int indexSharp = code.indexOf('#');
 
 			// 绘制项目号
-			g2.drawString("项目号：", 448.5f, 28);
-			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), 448.5f, 38);
+			g2.drawString("项目号：", (float) (x + 448.5), (float) (y + 30));
+			g2.drawString(code.substring(indexSharp + 7, indexSharp + 13), (float) (x + 448.5), (float) (y + 40));
 
 			// 绘制流水号
-			g2.drawString("流水号：", 448.5f, 62);
-			g2.drawString(sno, 448.5f, 72);
+			g2.drawString("流水号：", (float) (x + 448.5), (float) (y + 65));
+			g2.drawString(sno, (float) (x + 448.5), (float) (y + 75));
 
 			// 绘制物料号
-			g2.drawString("物料号：", 448.5f, 96);
-			g2.drawString(item, 448.5f, 106);
+			g2.drawString("物料号：", (float) (x + 448.5), (float) (y + 98));
+			g2.drawString(item, (float) (x + 448.5), (float) (y + 108));
 
 			// 绘制物料描述
-			g2.drawString("物料描述：", 448.5f, 130);
+			g2.drawString("物料描述：", (float) (x + 448.5), (float) (y + 132));
 			int len = desc.length();
 			if (len > 15) {
-				g2.drawString(desc.substring(0, 15), 448.5f, 140);
-				g2.drawString(desc.substring(15, len), 448.5f, 148);
+				g2.drawString(desc.substring(0, 15), (float) (x + 448.5), (float) (y + 142));
+				g2.drawString(desc.substring(15, len), (float) (x + 448.5), (float) (y + 150));
 			} else {
-				g2.drawString(desc, 448.5f, 140);
+				g2.drawString(desc, (float) (x + 448.5), (float) (y + 142));
 			}
 
 			// 绘制条形码标签
 			font = new Font("新宋体", Font.BOLD, 10);
 			g2.setFont(font);
-			g2.drawString(barCode, (float) (x + 20), (float) (y + 30));
+			g2.drawString(barCode, (float) (x + 25), (float) (y + 30));
 			g2.drawImage(barCodeImg, (int) (x + 14), (int) (y + 38), (int) (barCodeImg.getWidth(null) * 0.6),
 					(int) (20), c);
 
@@ -211,7 +211,7 @@ public class WitturCEAndBarcode implements Printable {
 
 		HashAttributeSet hashAttributeSet = new HashAttributeSet();
 
-		String printerName = "ZDesigner 105SLPlus-300dpi ZPL";
+		String printerName = "ZDesigner ZM400 300 dpi (ZPL) (副本 3)";
 
 		hashAttributeSet.add(new PrinterName(printerName, null));
 

@@ -123,30 +123,30 @@ public class BarcodeAndQRCode implements Printable {
 			}
 
 			// 绘制条形码标签
-			g2.drawString(barCode, (float) (x + 20), (float) (y + 30));
-			g2.drawImage(codeImg, (int) (x + 14), (int) (y + 38), (int) (codeImg.getWidth(null) * 0.56), (int) (15), c);
+			g2.drawString(barCode, (float) (x + 30), (float) (y + 30));
+			g2.drawImage(codeImg, 20, 38, (int) (codeImg.getWidth(null) * 0.56 + x), (int) (y + 15), c);
 
 			// 绘制原来的挂件标签
 			font = new Font("新宋体", Font.BOLD, 8);
 			g2.setFont(font);// 设置字体
 			/** #号索引 */
 			int indexSharp = qrCode.indexOf('#');
-			g2.drawImage(qrCodeImg, 10, 110, c);
+			g2.drawImage(qrCodeImg, (int) (x + 30), (int) (y + 105), c);
 
-			g2.drawString("物料类别：挂件", 80, 110);
-			g2.drawString("项目号：", 80f, 121f);
-			g2.drawString(qrCode.substring(indexSharp + 7, indexSharp + 13), 114f, 121f);
-			g2.drawString("流水号：", 80f, 132f);
-			g2.drawString(sno, 114f, 132f);
-			g2.drawString("物料号：", 80f, 143f);
-			g2.drawString(item, 114f, 143f);
-			g2.drawString("描述：", 80f, 154f);
+			g2.drawString("物料类别：挂件", (float) (x + 80), (float) (y + 110));
+			g2.drawString("项目号：", (float) (x + 80), (float) (y + 121));
+			g2.drawString(qrCode.substring(indexSharp + 7, indexSharp + 13), (float) (x + 114), (float) (y + 121));
+			g2.drawString("流水号：", (float) (x + 80), (float) (y + 132));
+			g2.drawString(sno, (float) (x + 114), (float) (y + 132));
+			g2.drawString("物料号：", (float) (x + 80), (float) (y + 143));
+			g2.drawString(item, (float) (x + 114), (float) (y + 143));
+			g2.drawString("描述：", (float) (x + 80), (float) (y + 154));
 			int len = desc.length();
 			if (len > 15) {
-				g2.drawString(desc.substring(0, 15), 105.5f, 154f);
-				g2.drawString(desc.substring(15, len), 105.5f, 165f);
+				g2.drawString(desc.substring(0, 15), (float) (x + 105.5), (float) (y + 154));
+				g2.drawString(desc.substring(15, len), (float) (x + 105.5), (float) (y + 165));
 			} else {
-				g2.drawString(desc, 105.5f, 154f);
+				g2.drawString(desc, (float) (x + 105.5), (float) (y + 154));
 			}
 			return PAGE_EXISTS;
 		default:
@@ -176,7 +176,7 @@ public class BarcodeAndQRCode implements Printable {
 
 		HashAttributeSet hs = new HashAttributeSet();
 
-		String printerName = "ZDesigner 105SLPlus-300dpi ZPL";
+		String printerName = "ZDesigner ZM400 300 dpi (ZPL) (副本 1)";
 
 		hs.add(new PrinterName(printerName, null));
 
